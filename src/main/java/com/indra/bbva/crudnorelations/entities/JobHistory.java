@@ -2,6 +2,7 @@ package com.indra.bbva.crudnorelations.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -24,8 +25,13 @@ public class JobHistory implements Serializable {
 
     //@MapsId("start_date")
     @Id
+    @Temporal(TemporalType.TIMESTAMP)
     private Date start_date;
 
+    @PrePersist
+    public void prePersist(){
+        this.start_date=new Date();
+    }
 
     private Date end_date;
 

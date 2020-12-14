@@ -24,7 +24,8 @@ public interface ICountriesDao extends JpaRepository<Countries,String> {
     public List<Countries> buscarRelacion();
 
     //@Query("select c from Countries c JOIN fetch c.regions where r.region_id =?1")
-   // public Countries findCountryByRegionId(Long id);
+    //   // public Countries findCountryByRegionId(Long id);
+
 
 
     @Transactional

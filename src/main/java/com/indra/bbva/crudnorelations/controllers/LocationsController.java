@@ -9,10 +9,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,12 +58,12 @@ public class LocationsController {
         Map<String,Object> response = new HashMap<>();
         if (result.hasErrors()){
 
-            /*
-            *  List<String> errors = new ArrayList<>();
+
+           /*   List<String> errors = new ArrayList<>();
             for(FieldError err: result.getFieldErrors()) {
                 errors.add("El campo '" + err.getField() +"' "+ err.getDefaultMessage());
-            }
-            * */
+            }*/
+
             List<String> errors=result.getFieldErrors()
                     .stream()
                     .map(err -> "El campo"+err.getField()+""+err.getDefaultMessage())
